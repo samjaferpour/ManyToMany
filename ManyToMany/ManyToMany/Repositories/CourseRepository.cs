@@ -14,5 +14,10 @@ namespace ManyToMany.Repositories
         {
             _context.Courses.Add(course);
         }
+        public IEnumerable<Course> GetAll()
+        {
+            var courses = _context.Courses.ToList();
+            return courses;
+        }
     }
 }
