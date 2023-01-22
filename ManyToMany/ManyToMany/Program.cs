@@ -1,4 +1,6 @@
 using ManyToMany.Entities;
+using ManyToMany.Repositories;
+using ManyToMany.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ManyToManyDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ManyToManyConStr")));
+
+builder.Services.AddScoped<CourseRepository>();
+builder.Services.AddScoped<StudentRepository>();
+builder.Services.AddScoped<UnitOfWork>();
+builder.Services.AddScoped<AddStudentService>();
+builder.Services.AddScoped<AddCourseService>();
+builder.Services.AddScoped<GetAllStudentsService>();
+builder.Services.AddScoped<GetAllCoursesService>();
+builder.Services.AddScoped<SelectUnitService>();
 
 var app = builder.Build();
 
