@@ -22,6 +22,8 @@ builder.Services.AddScoped<AddCourseService>();
 builder.Services.AddScoped<GetAllStudentsService>();
 builder.Services.AddScoped<GetAllCoursesService>();
 builder.Services.AddScoped<SelectUnitService>();
+builder.Services.AddScoped<StudentCourseRepository>();
+builder.Services.AddScoped<GetCoursesByStudentNameService>();
 
 var app = builder.Build();
 

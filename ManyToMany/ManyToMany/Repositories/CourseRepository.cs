@@ -1,4 +1,5 @@
-﻿using ManyToMany.Entities;
+﻿using ManyToMany.Dtos;
+using ManyToMany.Entities;
 
 namespace ManyToMany.Repositories
 {
@@ -17,6 +18,11 @@ namespace ManyToMany.Repositories
         public IEnumerable<Course> GetAll()
         {
             var courses = _context.Courses.ToList();
+            return courses;
+        }
+        public Course GetById(int id)
+        {
+            var courses = _context.Courses.Where(x => x.Id == id).FirstOrDefault();
             return courses;
         }
     }

@@ -19,6 +19,11 @@ namespace ManyToMany.Repositories
             var students = _context.Students.ToList();
             return students;
         }
+        public Student FindByName(string name)
+        {
+            var student = _context.Students.SingleOrDefault(x => x.Name == name);
+            return student;
+        }
 
     }
 }

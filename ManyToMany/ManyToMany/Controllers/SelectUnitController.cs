@@ -11,17 +11,26 @@ namespace ManyToMany.Controllers
     public class SelectUnitController : ControllerBase
     {
         private readonly SelectUnitService _selectUnitService;
+        private readonly GetCoursesByStudentNameService _getCoursesByStudentNameService;
 
-        public SelectUnitController(SelectUnitService selectUnitService)
+        public SelectUnitController(SelectUnitService selectUnitService, GetCoursesByStudentNameService getCoursesByStudentNameService)
         {
             this._selectUnitService = selectUnitService;
+            this._getCoursesByStudentNameService = getCoursesByStudentNameService;
         }
         [HttpPost]
-        [Route("[controller]")]
+        [Route("[action]")]
         public ActionResult UnitSelect(SelectCoursesRequest request)
         {
             _selectUnitService.Execute(request);
             return Ok("units selected for the student successfully");
+        }
+        [HttpPost]
+        [Route("[action]")]
+        public ActionResult GetCoursesByStudentName(GetCoursesByStudentNameRequest request)
+        {
+            var result = _getCoursesByStudentNameService.Execute(request);
+            return Ok(result);
         }
     }
 }

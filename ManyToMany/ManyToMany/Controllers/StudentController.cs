@@ -18,14 +18,14 @@ namespace ManyToMany.Controllers
             this._getAllStudentsService = getAllStudentsService;
         }
         [HttpPost]
-        [Route("[controller]")]
+        [Route("[action]")]
         public ActionResult AddStudent(AddStudentRequest request)
         {
             _addStudentService.Execute(request);
             return Ok("Added Successfully");
         }
         [HttpGet]
-        [Route("[controller]")]
+        [Route("[action]")]
         public ActionResult GetAllStudents() 
         {
             var students = _getAllStudentsService.Execute();

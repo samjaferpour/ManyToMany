@@ -18,14 +18,14 @@ namespace ManyToMany.Controllers
             this._getAllCoursesService = getAllCoursesService;
         }
         [HttpPost]
-        [Route("[controller]")]
+        [Route("[action]")]
         public ActionResult AddCourse(AddCourseRequest request)
         {
             _addCourseService.Execute(request);
             return Ok("Added Successfully");
         }
         [HttpGet]
-        [Route("[controller]")]
+        [Route("[action]")]
         public ActionResult GetAllCourses()
         {
             var courses = _getAllCoursesService.Execute();
